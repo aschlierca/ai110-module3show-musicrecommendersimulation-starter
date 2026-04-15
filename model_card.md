@@ -1,111 +1,54 @@
 # 🎧 Model Card: Music Recommender Simulation
 
-## 1. Model Name  
+## 1. Model Name
 
-Give your model a short, descriptive name.  
-Example: **VibeFinder 1.0**  
+## VibeFinder 1.0
 
----
+## 2. Intended Use
 
-## 2. Intended Use  
-
-Describe what your recommender is designed to do and who it is for. 
-
-Prompts:  
-
-- What kind of recommendations does it generate  
-- What assumptions does it make about the user  
-- Is this for real users or classroom exploration  
+VibeFinder recommends songs from a small catalog based on a user’s preferred genre, mood, and energy level. It was created for classroom learning to demonstrate how content-based recommendation systems work, not for real music apps.
+Prompts:
 
 ---
 
-## 3. How the Model Works  
+## 3. How the Model Works
 
-Explain your scoring approach in simple language.  
-
-Prompts:  
-
-- What features of each song are used (genre, energy, mood, etc.)  
-- What user preferences are considered  
-- How does the model turn those into a score  
-- What changes did you make from the starter logic  
-
-Avoid code here. Pretend you are explaining the idea to a friend who does not program.
+The system compares each song’s genre, mood, and energy to the user’s preferences. Genre matches give 2 points, mood matches give 1 point, and up to 1 point is added for energy similarity, then the top 5 songs are recommended.
 
 ---
 
-## 4. Data  
+## 4. Data
 
-Describe the dataset the model uses.  
+Describe the dataset the model uses.
 
-Prompts:  
-
-- How many songs are in the catalog  
-- What genres or moods are represented  
-- Did you add or remove data  
-- Are there parts of musical taste missing in the dataset  
+The dataset contains 10 songs in a CSV file with genres like pop, lofi, rock, ambient, jazz, synthwave, and indie pop. Many major genres such as hip hop, R&B, classical, and country are missing, which limits recommendation variety.
 
 ---
 
-## 5. Strengths  
+## 5. Strengths
 
-Where does your system seem to work well  
-
-Prompts:  
-
-- User types for which it gives reasonable results  
-- Any patterns you think your scoring captures correctly  
-- Cases where the recommendations matched your intuition  
+The model works well when the user’s preferences match songs in the dataset. For example, pop/happy ranked Sunrise City first and rock/intense ranked Storm Runner first with scores near 4.
 
 ---
 
-## 6. Limitations and Bias 
+## 6. Limitations and Bias
 
-Where the system struggles or behaves unfairly. 
-
-Prompts:  
-
-- Features it does not consider  
-- Genres or moods that are underrepresented  
-- Cases where the system overfits to one preference  
-- Ways the scoring might unintentionally favor some users  
+Genre is weighted more heavily than other features, so songs with the same genre usually rank highest even if mood or energy differ. The small dataset also reduces variety, especially for genres with only one song.
 
 ---
 
-## 7. Evaluation  
+## 7. Evaluation
 
-How you checked whether the recommender behaved as expected. 
-
-Prompts:  
-
-- Which user profiles you tested  
-- What you looked for in the recommendations  
-- What surprised you  
-- Any simple tests or comparisons you ran  
-
-No need for numeric metrics unless you created some.
+Testing showed the pop/happy profile ranked Golden Horizon first with a score of about 3.98, while the rock/intense profile ranked Thunder Road first with a score near 3.99. The ambient/chill high-energy edge case ranked Starlight Drift first, but it had a low energy similarity of around 0.38, showing the system struggles when energy preferences do not match the genre well.
 
 ---
 
-## 8. Future Work  
+## 8. Future Work
 
-Ideas for how you would improve the model next.  
-
-Prompts:  
-
-- Additional features or preferences  
-- Better ways to explain recommendations  
-- Improving diversity among the top results  
-- Handling more complex user tastes  
+Future improvements include adding 50+ songs from more genres like hip hop and R&B. The model could also add collaborative filtering and features like danceability and valence.
 
 ---
 
-## 9. Personal Reflection  
+## 9. Personal Reflection
 
-A few sentences about your experience.  
-
-Prompts:  
-
-- What you learned about recommender systems  
-- Something unexpected or interesting you discovered  
-- How this changed the way you think about music recommendation apps  
+This project showed that even a simple scoring system can produce reasonable recommendations with clear preferences. Real platforms like Spotify likely perform better because they learn from user listening behavior rather than only stated preferences.
